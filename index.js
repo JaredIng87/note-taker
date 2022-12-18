@@ -1,11 +1,11 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const noteData = require('./db/notes.json');
 const PORT = 3001;
 
 const app = express();
 
-// Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -20,20 +20,48 @@ app.get('/api/notes', (req, res) => res.json(noteData));
 app.post('/api/notes', (req, res) => {
     console.info(`${req.method} request received to add a note`);
 
-    let response;
+    const { title, text } = req.body;
 
-  if (req.body) {
-    response = {
-      status: 'success',
-      data: req.body,
-    };
-    res.status(201).json(response);
-  } else {
-    res.status(400).json("Request body can't be blank");
-  }
+    if (title&&text) {
 
-  console.log(req.body);
-});
+        const newNote = {
+            title,
+            text
+        };
+
+        fs.readFile('./db/notes.json', 'utf8', (err, data) => {
+            if (err) {
+              console.error(err);
+            } else {
+              // Convert string into JSON object
+              const parsedNotes = JSON.parse(data);
+      
+              // Add a new review
+              parsedNotes.push(newNote);
+      
+              // Write updated reviews back to the file
+              fs.writeFile(
+                './db/notes.json',
+                JSON.stringify(parsedNotes, null, 8),
+                (writeErr) =>
+                  writeErr
+                    ? console.error(writeErr)
+                    : console.info('Successfully updated notes!')
+              );
+            }
+          });
+    
+        const response = {
+          status: 'success',
+          body: newNote,
+        };
+    
+        console.log(response);
+        res.status(201).json(response);
+      } else {
+        res.status(500).json('Error in posting review');
+      }
+    });
 
 
 app.get('*', (req, res) => {
