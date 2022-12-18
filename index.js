@@ -17,6 +17,25 @@ app.get('/notes', (req, res) => {
 
 app.get('/api/notes', (req, res) => res.json(noteData));
 
+app.post('/api/notes', (req, res) => {
+    console.info(`${req.method} request received to add a note`);
+
+    let response;
+
+  if (req.body) {
+    response = {
+      status: 'success',
+      data: req.body,
+    };
+    res.status(201).json(response);
+  } else {
+    res.status(400).json("Request body can't be blank");
+  }
+
+  console.log(req.body);
+});
+
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
   });
