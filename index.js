@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const uuid = require('./helpers/uuid');
 const noteData = require('./db/notes.json');
 const PORT = 3001;
 
@@ -26,7 +27,9 @@ app.post('/api/notes', (req, res) => {
 
         const newNote = {
             title,
-            text
+            text,
+            id: uuid(),
+            
         };
 
         fs.readFile('./db/notes.json', 'utf8', (err, data) => {
@@ -59,7 +62,7 @@ app.post('/api/notes', (req, res) => {
         console.log(response);
         res.status(201).json(response);
       } else {
-        res.status(500).json('Error in posting review');
+        res.status(500).json('Error in posting note');
       }
     });
 
