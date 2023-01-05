@@ -2,7 +2,7 @@
 
   In this app, the user can write and save notes. The user can the recall the notes by clicking on the desired note from the list
 
-  todo: debug save to show new note in list
+  todo: debug save to show new note in list. New notes save to database, but will not appear on screen until app is restarted
 
   ## Table of Contents
 
@@ -31,3 +31,7 @@
   ## License
   
   n/a
+
+  deployed URL: https://salty-forest-89064.herokuapp.com/notes
+
+  ![Screenshot](./images/screenshot.png)

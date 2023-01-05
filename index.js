@@ -39,10 +39,10 @@ app.post('/api/notes', (req, res) => {
               // Convert string into JSON object
               const parsedNotes = JSON.parse(data);
       
-              // Add a new review
+              // Add a new note
               parsedNotes.push(newNote);
       
-              // Write updated reviews back to the file
+              // Write updated note back to the file
               fs.writeFile(
                 './db/notes.json',
                 JSON.stringify(parsedNotes, null, 8),
