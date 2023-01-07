@@ -1,8 +1,7 @@
 # Note Taker
 
-  In this app, the user can write and save notes. The user can the recall the notes by clicking on the desired note from the list
+  In this app, the user can write and save notes. The user can then view the saved notes by clicking on the desired note from the list on left hand side of screen.
 
-  todo: debug save to show new note in list. New notes save to database, but will not appear on screen until app is restarted
 
   ## Table of Contents
 
@@ -11,14 +10,15 @@
   3. [Contributing](#contributing)
   4. [Tests](#tests)
   5. [Liscense](#liscense)
+  6. [Author](#author)
   
   ## Installation
   
-  The user must install the express, path, and fs npm modules
+  no installation necessary
   
   ## Usage
   
-  the user ust first run npm install from the terminal. the user must then run node.js from the terminal. the user can then open http://localhost:3001 to view the app
+  open the app by visiting https://salty-forest-89064.herokuapp.com in your web browser, and click the "get started" button. type a note title and body in the text boxes on right side of screen, and click the save (floppy disk) button. once note is saved, choose note from list to view.
   
   ## Contributing
   
@@ -31,6 +31,11 @@
   ## License
   
   n/a
+
+  ## Author
+  Jared Ingersoll-student
+  email: jaredingersoll14@gmail.com
+  github: https://github.com/JaredIng87
 
   deployed URL: https://salty-forest-89064.herokuapp.com/notes
 
